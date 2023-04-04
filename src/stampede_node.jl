@@ -42,10 +42,13 @@ init_pos = relaxedIK.relaxedIK_vars.init_ee_positions[1]
 
 write(f, "$loaded_robot, $task_name, $scaling_factor, $(init_pos[1]), $(init_pos[2]), $(init_pos[3])\n")
 
+println("Trajectory length:", length(traj))
+
 for i = 1:length(traj)
     time = s.times[i]
     write(f, "$time; ")
     x = traj[i]
+    print(i, x)
     for j = 1:length(x)-1
         write(f, "$(x[j]), ")
     end

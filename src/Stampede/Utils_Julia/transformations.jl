@@ -1,7 +1,7 @@
 using Rotations, StaticArrays, LinearAlgebra
 
-q = Quat(1.0,0.0,0.0,0.0)
-q2 = Quat(0.0,1.0,0.0,0.0)
+q = QuatRotation(1.0,0.0,0.0,0.0)
+q2 = QuatRotation(0.0,1.0,0.0,0.0)
 
 function quaternion_log(quaternion)
     out_vec = MVector(quaternion.x, quaternion.y, quaternion.z)
@@ -30,7 +30,7 @@ function quaternion_exp(vec3)
         q[4]*=c
     end
     q[1] = cos(a)
-    return Quat(q[1], q[2], q[3], q[4])
+    return QuatRotation(q[1], q[2], q[3], q[4])
 end
 
 function quaternion_disp(q, qPrime)

@@ -57,7 +57,7 @@ end
 
 function initialize_first_layer(stampede, num_of_first_layer_samples, min_samples_per_layer)
     q = stampede.quat_goals[1]
-    q_goal1 = [Quat(q[1], q[2], q[3], q[4])]
+    q_goal1 = [QuatRotation(q[1], q[2], q[3], q[4])]
     p_goal1 = [stampede.pos_goals[1]]
 
     #=
@@ -102,7 +102,7 @@ end
 
 function add_solution_to_first_layer(stampede, prev_state, layer_idx)
     q = stampede.quat_goals[layer_idx]
-    q_goal1 = [Quat(q[1], q[2], q[3], q[4])]
+    q_goal1 = [QuatRotation(q[1], q[2], q[3], q[4])]
     p_goal1 = [stampede.pos_goals[layer_idx]]
 
     xopt, try_idx, valid_sol, pos_error, rot_error = solve_precise(stampede.baseIK, p_goal1, q_goal1, prev_state = prev_state, pos_tol=stampede.pos_tol, rot_tol=stampede.rot_tol)
@@ -119,7 +119,7 @@ end
 
 function add_solution_to_kth_layer(stampede, prev_state, layer_idx)
     q = stampede.quat_goals[layer_idx]
-    q_goal1 = [Quat(q[1], q[2], q[3], q[4])]
+    q_goal1 = [QuatRotation(q[1], q[2], q[3], q[4])]
     p_goal1 = [stampede.pos_goals[layer_idx]]
 
     xopt, try_idx, valid_sol, pos_error, rot_error = solve_precise(stampede.baseIK, p_goal1, q_goal1, prev_state = prev_state, pos_tol=stampede.pos_tol, rot_tol=stampede.rot_tol)
@@ -145,7 +145,7 @@ function fill_in_layer(stampede, layer_idx, min_samples_per_layer; first_layer =
         return false
     else
         q = stampede.quat_goals[layer_idx]
-        q_goal1 = [Quat(q[1], q[2], q[3], q[4])]
+        q_goal1 = [QuatRotation(q[1], q[2], q[3], q[4])]
         p_goal1 = [stampede.pos_goals[layer_idx]]
 
         num_nodes_in_layer = stampede.num_nodes_in_layers[layer_idx]

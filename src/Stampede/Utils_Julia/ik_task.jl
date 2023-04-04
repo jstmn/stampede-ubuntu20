@@ -21,8 +21,8 @@ function get_ik_task(path_to_src, task_name; scaling_factor=1.0)
 
         pos = scaling_factor * SVector( parse(Float64, pos_arr[1]), parse(Float64, pos_arr[2]), parse(Float64, pos_arr[3])   )
 
-        #quat = Quat(0.9999999,0.00000001,0.00000001,0.00000001)
-        quat = Quat(   parse(Float64, quat_arr[1]), parse(Float64, quat_arr[2]), parse(Float64, quat_arr[3]), parse(Float64, quat_arr[4])   )
+        #quat = QuatRotation(0.9999999,0.00000001,0.00000001,0.00000001)
+        quat = QuatRotation(   parse(Float64, quat_arr[1]), parse(Float64, quat_arr[2]), parse(Float64, quat_arr[3]), parse(Float64, quat_arr[4])   )
 
         push!(pos_goals, pos)
         push!(quat_goals, quat)

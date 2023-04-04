@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 import os
 import rospy
@@ -8,7 +8,7 @@ rospy.init_node('start_rviz_viewer')
 
 
 path_to_src = os.path.dirname(__file__)
-print path_to_src
+print(path_to_src)
 f = open(path_to_src + '/Stampede/Config/relaxedik_path')
 path_to_relaxedik_src =  f.readline()
 f.close()

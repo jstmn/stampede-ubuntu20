@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 from Stampede.Utils.ros_utils import *
 import rospy
@@ -16,7 +16,7 @@ marker_pub = rospy.Publisher("/visualization_marker", Marker, queue_size = 3)
 tf_pub = tf.TransformBroadcaster()
 
 path_to_src = os.path.dirname(__file__)
-print path_to_src
+print(path_to_src)
 f = open(path_to_src + '/Stampede/Config/relaxedik_path')
 path_to_relaxedik_src =  f.readline()
 path_to_relaxedik_src = path_to_relaxedik_src + '/src'
@@ -69,13 +69,13 @@ goal_positions = []
 goal_orientations = []
 
 
-for i in xrange(len(lines)):
+for i in range(len(lines)):
     line_arr = lines[i].split(';')
     times.append(float(line_arr[0]))
 
     state_arr = line_arr[1].split(',')
     state = []
-    for j in xrange(len(state_arr)):
+    for j in range(len(state_arr)):
         state.append(float(state_arr[j]))
     states.append(state)
 
@@ -117,7 +117,7 @@ while not rospy.is_shutdown():
     draw_linestrip_in_rviz(marker_pub, 'common_world', goal_positions, [0.,0.2,1.0,0.6], width=0.01)
     draw_linestrip_in_rviz(marker_pub, 'common_world', goal_positions[:idx], [0.,0.8,.2,0.8], width=0.02, id=1001)
 
-    print js
+    print(js)
 
     idx += 1
 

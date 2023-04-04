@@ -59,7 +59,7 @@ end
 
 function get_solution(stampede, layer_idx; prev_state = nothing)
     q = stampede.quat_goals[layer_idx]
-    q_goal1 = [Quat(q[1], q[2], q[3], q[4])]
+    q_goal1 = [QuatRotation(q[1], q[2], q[3], q[4])]
     p_goal1 = [stampede.pos_goals[layer_idx]]
 
     if prev_state == nothing
