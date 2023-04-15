@@ -115,7 +115,8 @@ function get_number_of_layer_clusters(stampede, layer_idx; neighborhood_rad = 0.
         solutions = get_solutions_in_layer(stampede, layer_idx, trans = true)
         # println(size(solutions))
         clusters = dbscan(solutions, neighborhood_rad, min_neighbors = 1, min_cluster_size = 1)
-        return length(clusters)
+        # return length(clusters)
+        return length(clusters.clusters)
     end
 end
 

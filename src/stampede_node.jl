@@ -14,6 +14,11 @@ init_node("stampede")
 #task_name = "spirals"
 task_name = get_param("input_motion_file")
 scaling_factor = get_param("scaling_factor")
+
+
+# TODO: Add xyz_offset. NOTE: keep in mind that cppflow is using a reference frame 'path_offset_frame'
+world_t_path0 = get_param("world_t_path0")
+
 #scaling_factor = 0.8
 pos_goals, quat_goals = get_ik_task(path_to_src, task_name, scaling_factor=scaling_factor)
 
@@ -29,7 +34,7 @@ if loaded_robot == ""
     exit(-1)
 end
 
-relaxedIK = get_standard(relaxedik_path, loaded_robot)
+relaxedIK = get_standard(relaxedik_path, loaded_robot) # returns a RelaxedIK object. ee pose goals are relative
 baseIK = get_base_ik(relaxedik_path, loaded_robot)
 
 s = StampedeObj(relaxedIK, baseIK, pos_goals, quat_goals, 15.0)
