@@ -185,7 +185,7 @@ function gallop_to_next_layer(stampede, layer_idx)
                     stampede.minmax_vel_score_graph[new_node_idx, layer_idx] = stampede.minmax_vel_score_graph[i, layer_idx-1]
                 end
                 add_solution(stampede, xopt, layer_idx)
-                println("added solution $new_node_idx to layer $layer_idx")
+                # println("added solution $new_node_idx to layer $layer_idx")
             end
         end
     end

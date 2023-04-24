@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+   <arg name="trajectory_name" default="" />
+
+<!-- ##################################################################################### -->
+
+   <param name="trajectory_name" value="$(arg trajectory_name)"/>
+   <node pkg="stampede" type="analyze_trajectory.py" name="analyze_trajectory" output="screen"/>
+</launch>
