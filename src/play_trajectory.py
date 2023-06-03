@@ -28,7 +28,8 @@ from RelaxedIK.Utils.yaml_utils import get_relaxedIK_yaml_obj
 
 
 y = get_relaxedIK_yaml_obj(path_to_relaxedik_src)
-if not y == None:
+assert y is not None, f"error - relaxedik yaml object 'y' is none"
+if y is not None:
     urdf_file_name = y['urdf_file_name']
     fixed_frame = y['fixed_frame']
     joint_ordering = y['joint_ordering']
@@ -60,7 +61,6 @@ with open(fp, 'r') as f:
     while not line == '':
         lines.append(line)
         line = f.readline()
-
 
 
 times = []
@@ -145,7 +145,7 @@ while not rospy.is_shutdown():
     js.header.stamp.secs = now.secs
     js.header.stamp.nsecs = now.nsecs
     js_pub.publish(js)
-
+    print(js)
     # draw_linestrip_in_rviz(marker_pub, 'common_world', goal_positions, color=[0.,0.2,1.0,0.6], width=0.01)
     # draw_linestrip_in_rviz(marker_pub, 'common_world', goal_positions[:idx], color=[0., 0.8, .2, 0.8], width=0.02, id=1001)
 
